@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='./style.css'>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <script src='./scriptNavbar.js'></script>
+    <title>MEC</title>
+</head>
+<body>
+    <div id='container' class='width boxFont'>
+        <div id='navbar' class='width boxFont flex'>
+            <a id='logo' class='link' href='./index.html'>MEC</a>
+            <div id='searchBar' class='boxFont flex'>
+                <input id='searchTxt' class='boxFont search' type='text' placeholder='Co znaleźć?'>
+                <input id='searchButton' class='boxFont search' type='image' src='https://freeiconshop.com/wp-content/uploads/edd/search-outline.png'></input>
+            </div>
+            <div class='flex'>
+                <div  id='login' class='flex button link' onmouseover="showOption(event)" onmouseout="hideOption(event)">
+                    <img class='buttonIMG' src='https://icons.iconarchive.com/icons/icons8/windows-8/64/User-Interface-Login-icon.png'>
+                    <p class='boxFont basketWidth flex '>Zaloguj</p>
+                    <div id='logOrReg' class='flex' onmouseover='showOption(event)' onmouseout='hideOption(event)'>
+                        <a href='./login.html' class='width logOption'>LogIn</a>
+                        <p class='width logOption'>or</p>
+                        <a href='./register.html' class='width logOption'>Register</a>
+                    </div>
+                </div>
+                <a href='./profile.html' id='userAccount' class='flex basketWidth button link'>
+                    <img class='buttonIMG' src='https://freeiconshop.com/wp-content/uploads/edd/person-outline.png'>
+                    <p class='basketWidth boxFont flex'>Profil</p>
+                </a>
+                <a href='./basket.html' id='basket' class='flex basketWidth button link'>
+                    <img class='buttonIMG' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3lq3F5wIgfte5dY2SwTmVqjuS422fIH8JCg&usqp=CAU'>
+                    <p class='basketWidth boxFont flex'>Koszyk</p>
+                </a>
+            </div>
+        </div>
+        <div id='content' class='flex'>
+            <h1>Register</h1>
+            <form id='regForm' class='flex'>
+                <label for='username'>Podaj nazwę użytkownika</label>
+                <input class='width margin' type='text' id='username' autocomplete='off' required placeholder='Username'/>
+                <label for='email'>Podaj email</label>
+                <input class='width margin' type='email' id='email' autocomplete='off' required placeholder='Email'/>
+                <label for='password'>Podaj hasło</label>
+                <input class='width margin' type='password' id='password' autocomplete='off' required palceholder='Password'/>
+                <label for='password2'>Powtórz hasło</label>
+                <input class='width margin' type='password' id='password2' autocomplete='off' required palceholder='Password'/>
+                <input class='width margin' type='submit' value='SEND'/>
+            </form>
+            <script>
+                const form = document.getElementById('regForm')
+                form.addEventListener('submit', registerUser)
+                async function registerUser(event){
+                    event.preventDefault()
+                    const username = document.getElementById('username').value
+                    const email = document.getElementById('email').value
+                    const password = document.getElementById('password').value
+                    const result = await fetch('https://mecapikot.herokuapp.com/api/auth/register', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            password, email, username, 
+                        })
+                    }).then((res)=>res.json())
+                }
+            </script>
+            </div>
+        </div>
+        <div id='footer'></div>
+    </div>
+</body>
+</html>
