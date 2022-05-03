@@ -7,14 +7,30 @@ body{
     align-items: center;
     justify-content:center;
 }
+.font{
+    font-family: 'Lato';
+}
 .link{
     text-decoration: none;
     color: black;
     max-width: 65px;
 }
+.regForm{
+    margin: 0.25rem 0 0.5rem 0;
+    padding: 0.25rem;
+    border: solid 1px black;
+    border-radius: 5px;
+}
+.regButton{
+    background-color:aquamarine;
+    width: 8rem;
+}
 .boxFont{
     box-sizing: border-box;
     font-family: 'Lato';
+}
+.textCenter{
+    text-align: center;
 }
 .width{
     width: 100%;
@@ -22,14 +38,28 @@ body{
 .logOption{
     margin:0.25rem;
     padding: 0;
-    text-align: center;
     text-decoration: none;
     color: black;
+}
+#registerButton:hover{
+    cursor: pointer;
+}
+#loginTxt:hover{
+    cursor: default;
+}
+#registerLink:hover{
+    cursor: pointer;
+}
+#logInLink:hover{
+    cursor: pointer;
 }
 #logo{
     font-family: 'Monoton';
     font-size: 2.6rem;
     margin: 0 1rem 0 8rem;
+}
+#logo:hover{
+    cursor: pointer;
 }
 #navbar {
     justify-content:space-between;
@@ -40,6 +70,9 @@ body{
 .basketWidth{
     width: 3rem;
     margin:0;
+}
+#regForm{
+    width: 40ch;
 }
 .buttonIMG {
     max-width: 1.5rem;
